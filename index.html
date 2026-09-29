@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Laporan Kegiatan BPS Kota Jakarta Barat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <div>
+          <h1>Dashboard Laporan Kegiatan BPS Kota Jakarta Barat</h1>
+          <p id="updated" class="muted">Memuat data…</p>
+        </div>
+        <button type="button" id="reload" class="ghost">Muat ulang</button>
+      </header>
+
+      <section class="stats" aria-label="Ringkasan">
+        <div class="stat">
+          <span class="num" id="sTotal">–</span>
+          <span class="lbl">Total kegiatan</span>
+        </div>
+        <div class="stat hi">
+          <span class="num" id="sToday">–</span>
+          <span class="lbl">Kegiatan hari ini</span>
+        </div>
+        <div class="stat">
+          <span class="num" id="sNames">–</span>
+          <span class="lbl">Jumlah nama</span>
+        </div>
+        <div class="stat hi">
+          <span class="num" id="sReported">–</span>
+          <span class="lbl">Sudah lapor hari ini</span>
+          <small id="sPending"></small>
+        </div>
+      </section>
+
+      <section class="card filters" aria-label="Filter">
+        <div class="field combo">
+          <label for="nama">Nama</label>
+          <input
+            type="text"
+            id="nama"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="opts"
+            aria-autocomplete="list"
+            autocomplete="off"
+            placeholder="Semua nama (ketik untuk mencari)"
+          />
+          <ul id="opts" role="listbox" hidden></ul>
+        </div>
+        <div class="field">
+          <label for="tgl">Tanggal</label>
+          <input type="date" id="tgl" />
+        </div>
+        <div class="quick">
+          <button type="button" id="btnToday" class="ghost">Hari ini</button>
+          <button type="button" id="btnAll" class="ghost">Semua tanggal</button>
+        </div>
+      </section>
+
+      <p id="count" class="muted" aria-live="polite"></p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="c">No</th>
+              <th>Tanggal</th>
+              <th>Nama</th>
+              <th>Nama kegiatan</th>
+              <th>Foto</th>
+            </tr>
+          </thead>
+          <tbody id="grid"></tbody>
+        </table>
+      </div>
+      <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+      <p id="msg" class="msg" role="status" aria-live="polite"></p>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
